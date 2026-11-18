@@ -11,7 +11,7 @@
       "rotationY": 0,
       "scale": 1.6,
       "scene": "river",
-      "size_bytes": 17303520,
+      "size_bytes": 2854480,
       "url": "https://qingming-assets.pages.dev/timber-arch-bridge.glb"
     },
     {
@@ -25,7 +25,7 @@
       "rotationY": 1.5708,
       "scale": 40,
       "scene": "river",
-      "size_bytes": 20304624,
+      "size_bytes": 3027740,
       "url": "https://qingming-assets.pages.dev/stone-arch-bridge.glb"
     },
     {
@@ -39,7 +39,7 @@
       "rotationY": 0,
       "scale": 2,
       "scene": "river",
-      "size_bytes": 20349260,
+      "size_bytes": 3674392,
       "url": "https://qingming-assets.pages.dev/wharf-dock.glb"
     },
     {
@@ -53,7 +53,7 @@
       "rotationY": 0,
       "scale": 12,
       "scene": "river",
-      "size_bytes": 24763760,
+      "size_bytes": 4552788,
       "url": "https://qingming-assets.pages.dev/riverside-commercial-building.glb"
     },
     {
@@ -68,8 +68,8 @@
       "rotationY": 0,
       "scale": 15,
       "scene": "river",
-      "size_bytes": 26525756,
-      "size_gzipped_bytes": 20854893,
+      "size_bytes": 4043344,
+      "size_gzipped_bytes": 4032182,
       "url": "https://qingming-assets.pages.dev/restaurant-wine-house.glb.gz"
     },
     {
@@ -83,7 +83,7 @@
       "rotationY": 0,
       "scale": 1,
       "scene": "river",
-      "size_bytes": 26003916,
+      "size_bytes": 3761016,
       "url": "https://qingming-assets.pages.dev/teahouse.glb"
     }
   ],
