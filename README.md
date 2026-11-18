@@ -34,4 +34,4 @@ python3 -m http.server 8000
 
 ## 线上地址
 
-https://beisong.pages.dev/
+https://beisong-8hk.pages.dev/（beisong.pages.dev已被别的账号占了，建出来带了随机后缀）
