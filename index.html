@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="icon" href="data:,">
+<title>北宋汴京市井</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; overflow: hidden; background: #f3dfae;
+    font-family: system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; touch-action: none; }
+  #app, #app canvas { display: block; width: 100%; height: 100%; }
+  /* 加载 */
+  #loading { position: fixed; inset: 0; background: #2e2a22; color: #f3dfae;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 50; }
+  #loading h1 { font-size: 22px; margin: 0 0 8px; }
+  #loading .load-text { font-size: 14px; margin: 8px 0; }
+  .load-bar-wrap { width: 70%; max-width: 320px; height: 12px; background: #555; border-radius: 6px; overflow: hidden; }
+  .load-bar { height: 100%; width: 0%; background: #d8a24a; }
+  /* HUD */
+  #hud { position: fixed; top: 0; left: 0; right: 0; display: flex; justify-content: space-between;
+    align-items: flex-start; padding: 8px 10px; z-index: 20; pointer-events: none; }
+  #hud > div { pointer-events: auto; }
+  .hud-left span { display: inline-block; background: rgba(46,42,34,.75); color: #f3dfae;
+    padding: 4px 8px; border-radius: 6px; margin: 0 4px 4px 0; font-size: 14px; }
+  .hud-btn { background: rgba(46,42,34,.75); color: #f3dfae; border: 1px solid #8a7a5a;
+    padding: 5px 10px; border-radius: 6px; margin-left: 6px; font-size: 14px; cursor: pointer; }
+  /* 面板 */
+  .panel { position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    width: min(92vw, 560px); max-height: 82vh; overflow: auto; background: #fbf3dd;
+    border: 2px solid #8a7a5a; border-radius: 10px; padding: 14px 16px; z-index: 30;
+    box-shadow: 0 8px 30px rgba(0,0,0,.35); }
+  .panel h2 { margin: 0 0 8px; font-size: 18px; }
+  .panel p { margin: 6px 0; font-size: 14px; }
+  .panel .hint { color: #7a6a4a; font-size: 13px; }
+  .panel .npc-line { color: #5a4632; font-style: italic; }
+  .close-btn { position: absolute; top: 6px; right: 10px; border: none; background: none;
+    font-size: 22px; cursor: pointer; color: #7a6a4a; }
+  .goods-row { display: grid; grid-template-columns: 62px 62px 44px 62px 1fr; gap: 6px;
+    align-items: center; padding: 5px 0; border-bottom: 1px solid #e0d3b3; font-size: 14px; }
+  .goods-head { font-weight: bold; border-bottom: 2px solid #cbb98a; }
+  .qty-input { width: 56px; padding: 3px; font-size: 14px; }
+  .mini-btn { padding: 3px 8px; margin: 1px 2px 1px 0; font-size: 13px; cursor: pointer; }
+  .big-btn { padding: 9px 16px; margin-top: 8px; font-size: 15px; cursor: pointer; }
+  .haggle-btn { padding: 9px 14px; margin: 4px 4px 4px 0; font-size: 15px; cursor: pointer; }
+  .patience-wrap { height: 14px; background: #ddd; border-radius: 7px; overflow: hidden; }
+  .patience-bar { height: 100%; background: #c0392b; }
+  /* 提示与报错 */
+  #toast { position: fixed; bottom: 110px; left: 50%; transform: translateX(-50%);
+    background: rgba(46,42,34,.85); color: #fff; padding: 8px 14px; border-radius: 8px;
+    display: none; z-index: 40; font-size: 14px; max-width: 90vw; text-align: center; }
+  #prompt { position: fixed; bottom: 168px; left: 50%; transform: translateX(-50%);
+    display: none; align-items: center; gap: 10px; background: rgba(46,42,34,.85); color: #fff;
+    padding: 8px 12px; border-radius: 8px; z-index: 25; font-size: 14px; }
+  .prompt-btn { padding: 4px 12px; font-size: 14px; cursor: pointer; }
+  #errline { position: fixed; right: 8px; bottom: 8px; font-size: 12px; color: #a33;
+    background: rgba(255,255,255,.75); padding: 2px 6px; border-radius: 4px; display: none; z-index: 20; }
+  /* 触屏摇杆 */
+  #joystick { position: fixed; left: 16px; bottom: 16px; width: 120px; height: 120px;
+    border-radius: 50%; background: rgba(255,255,255,.18); border: 2px solid rgba(255,255,255,.4);
+    z-index: 20; touch-action: none; }
+  #stick { position: absolute; left: 40px; top: 40px; width: 40px; height: 40px;
+    border-radius: 50%; background: rgba(255,255,255,.65); }
+  @media (max-width: 640px) {
+    .hud-left span, .hud-btn { font-size: 12px; }
+    .goods-row { grid-template-columns: 52px 54px 40px 56px 1fr; font-size: 13px; }
+  }
+</style>
+<script type="importmap">
+{ "imports": { "three": "./vendor/three.module.js" } }
+</script>
+</head>
+<body>
+<div id="app"></div>
+<div id="loading">
+  <h1>北宋汴京市井</h1>
+  <div class="load-bar-wrap"><div class="load-bar"></div></div>
+  <div class="load-text">正在加载汴京…</div>
+</div>
+<div id="hud"></div>
+<div id="panels"></div>
+<div id="toast"></div>
+<div id="prompt"></div>
+<div id="joystick"><div id="stick"></div></div>
+<div id="errline"></div>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>

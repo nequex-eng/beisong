@@ -1,0 +1,171 @@
+{
+  "assets": [
+    {
+      "category": "bridges",
+      "id": "timber-arch-bridge",
+      "name": "虹桥",
+      "position": [
+        0,
+        0
+      ],
+      "rotationY": 0,
+      "scale": 1.6,
+      "scene": "river",
+      "size_bytes": 17303520,
+      "url": "https://qingming-assets.pages.dev/timber-arch-bridge.glb"
+    },
+    {
+      "category": "bridges",
+      "id": "stone-arch-bridge",
+      "name": "石拱桥",
+      "position": [
+        38,
+        0
+      ],
+      "rotationY": 1.5708,
+      "scale": 40,
+      "scene": "river",
+      "size_bytes": 20304624,
+      "url": "https://qingming-assets.pages.dev/stone-arch-bridge.glb"
+    },
+    {
+      "category": "architecture",
+      "id": "wharf-dock",
+      "name": "码头",
+      "position": [
+        -14,
+        -8
+      ],
+      "rotationY": 0,
+      "scale": 2,
+      "scene": "river",
+      "size_bytes": 20349260,
+      "url": "https://qingming-assets.pages.dev/wharf-dock.glb"
+    },
+    {
+      "category": "architecture",
+      "id": "riverside-commercial-building",
+      "name": "江边大商楼",
+      "position": [
+        -20,
+        14
+      ],
+      "rotationY": 0,
+      "scale": 12,
+      "scene": "river",
+      "size_bytes": 24763760,
+      "url": "https://qingming-assets.pages.dev/riverside-commercial-building.glb"
+    },
+    {
+      "category": "architecture",
+      "encoding": "gzip",
+      "id": "restaurant-wine-house",
+      "name": "酒楼",
+      "position": [
+        16,
+        16
+      ],
+      "rotationY": 0,
+      "scale": 15,
+      "scene": "river",
+      "size_bytes": 26525756,
+      "size_gzipped_bytes": 20854893,
+      "url": "https://qingming-assets.pages.dev/restaurant-wine-house.glb.gz"
+    },
+    {
+      "category": "architecture",
+      "id": "teahouse",
+      "name": "茶馆",
+      "position": [
+        24,
+        -10
+      ],
+      "rotationY": 0,
+      "scale": 1,
+      "scene": "river",
+      "size_bytes": 26003916,
+      "url": "https://qingming-assets.pages.dev/teahouse.glb"
+    }
+  ],
+  "cdn": "https://qingming-assets.pages.dev",
+  "economy": {
+    "actionPointsPerDay": 6,
+    "days": 7,
+    "goalMoney": 5000,
+    "goods": [
+      {
+        "base": 120,
+        "id": "silk",
+        "name": "丝绸"
+      },
+      {
+        "base": 80,
+        "id": "tea",
+        "name": "茶叶"
+      },
+      {
+        "base": 150,
+        "id": "porcelain",
+        "name": "瓷器"
+      },
+      {
+        "base": 30,
+        "id": "rice",
+        "name": "米粮"
+      },
+      {
+        "base": 50,
+        "id": "cloth",
+        "name": "布匹"
+      },
+      {
+        "base": 60,
+        "id": "wine",
+        "name": "酒"
+      },
+      {
+        "base": 25,
+        "id": "fruit",
+        "name": "果子"
+      },
+      {
+        "base": 200,
+        "id": "spice",
+        "name": "香料"
+      }
+    ],
+    "haggleRounds": 3,
+    "rentPerNight": 40,
+    "startMoney": 500,
+    "taxRate": 0.05
+  },
+  "notes": "GLB文件不在仓库里（GitHub连接器推不了二进制），走CDN直链；CDN带Access-Control-Allow-Origin:*，可跨域加载。后续批次：GLB先上CDN，再在这里加一条记录即可，场景和玩法不用改代码。",
+  "scenes": [
+    {
+      "assets": [
+        "timber-arch-bridge",
+        "stone-arch-bridge",
+        "wharf-dock",
+        "riverside-commercial-building",
+        "restaurant-wine-house",
+        "teahouse"
+      ],
+      "id": "river",
+      "name": "虹桥汴河",
+      "status": "playable"
+    },
+    {
+      "assets": [],
+      "id": "street",
+      "name": "御街商铺",
+      "status": "planned"
+    },
+    {
+      "assets": [],
+      "id": "market",
+      "name": "瓦舍市集",
+      "status": "planned"
+    }
+  ],
+  "version": 1
+}
